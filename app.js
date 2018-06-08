@@ -11,12 +11,9 @@ var app = express();
 require('dotenv').config();
 
 require('knex')({
-  client: 'mysql',
+  client: 'sqlite3',
   connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    filename: process.env.SQLITE_FILE
   }
 });
 
