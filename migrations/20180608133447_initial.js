@@ -4,27 +4,27 @@ exports.up = function(knex, Promise) {
   return Promise.all([
 
     knex.schema.createTable('materials', function (table) {
-      table.increments();
+      table.increments().primary();
       table.string('name');
     }),
 
     knex.schema.createTable('sentences', function (table) {
-      table.increments();
+      table.increments().primary();
       table.text('sentence');
-      table.integer('materials_id').references('id').inTable('Materials');
+      table.integer('materials_id').unsigned().references('materials.id');
     }),
 
     knex.schema.createTable('tags', function (table) {
-      table.increments();
+      table.increments().primary();
       table.string('name');
-      table.integer('materials_id').references('id').inTable('Materials');
+      table.integer('materials_id').unsigned().references('materials.id');
     }),
 
     knex.schema.createTable('labels', function (table) {
-      table.increments();
+      table.increments().primary();
       table.string('partial');
-      table.integer('materials_id').references('id').inTable('Materials');
-      table.integer('tags_id').references('id').inTable('Tags');
+      table.integer('materials_id').unsigned().references('materials.id');
+      table.integer('tags_id').unsigned().references('tags.id');
     })
 
   ]);

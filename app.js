@@ -5,17 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var materialsRouter = require('./routes/materials');
+var sentencesRouter = require('./routes/sentences');
+var tagsRouter = require('./routes/tags');
+var labelsRouter = require('./routes/labels');
 
 var app = express();
 
 require('dotenv').config();
-
-require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: process.env.SQLITE_FILE
-  }
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +27,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api/materials', materialsRouter);
+app.use('/api/sentences', sentencesRouter);
+app.use('/api/tags', tagsRouter);
+app.use('/api/labels', labelsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
