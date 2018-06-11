@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var expresshbs = require('express-handlebars');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -15,8 +16,12 @@ var app = express();
 require('dotenv').config();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine('hbs', expresshbs({
+  defaultLayout: 'layout',
+  extname: '.hbs',
+  layoutsDir: './views'
+}));
+app.set('view engine', 'hbs');
 
 app.set('port', process.env.PORT | 3000);
 
