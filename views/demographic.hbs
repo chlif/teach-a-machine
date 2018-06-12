@@ -1,0 +1,53 @@
+<section id="demographic" class="jumbotron">
+  <p><strong>{{material.name}}</strong></p>
+  <div id="alert" class="alert alert-danger"></div>
+
+  <hr class="my-4">
+
+  <p>Please, fill in your gender and age. This information is not connected to your answer and used only to understand how inclusive our dataset is.</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+        <strong>Age</strong>
+        <div id="age" class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" data-age-group="0">Unspecified</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="1">-19</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="2">20-29</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="3">30-39</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="4">40-49</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="5">50-59</a>
+          <a href="#" class="list-group-item list-group-item-action" data-age-group="6">60-</a>
+        </div>
+
+      </div>
+      <div class="col">
+
+        <strong>Gender</strong>
+        <div id="gender" class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" data-gender="other">Other</a>
+          <a href="#" class="list-group-item list-group-item-action" data-gender="female">Female</a>
+          <a href="#" class="list-group-item list-group-item-action" data-gender="male">Male</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p id="start-button-wrapper">
+          <button class="btn btn-primary" type="button" id="start">Let's start!</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script type="text/javascript">
+  window.teachamachine = {
+    materialsId: {{material.id}}
+  };
+</script>
+<script type="text/javascript" src="/javascripts/alert.js"></script>
+<script type="text/javascript" src="/javascripts/demographic.js"></script>

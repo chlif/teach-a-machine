@@ -2,8 +2,15 @@ body {
   padding-top: 50px;
 }
 
-#label {}
+#demographic {}
+  #demographic .container {
+    padding-left: 0;
+  }
+  #demographic #start-button-wrapper {
+    margin-top: 20px;
+  }
 
+#label {}
   #label #sentence {
     font-size: 2rem;
   }
