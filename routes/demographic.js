@@ -7,11 +7,11 @@ router.post('/', function(req, res, next) {
     let gender = req.body.gender || 'other';
     let ageGroup = req.body.ageGroup || 0;
 
-    Demographics.add(materialsId, gender, ageGroup,
-      demographic => {
-        res.json({ message: 'new demographic added', id: demographic[0] });
-      },
-      error => next(error));
+    Demographics.add(materialsId, gender, ageGroup)
+      .then(demographic => {
+        return res.json({ message: 'new demographic added', id: demographic[0] });
+      })
+      .catch(error => next(error));
   } else {
     next(new Error("No material id set."));
   }

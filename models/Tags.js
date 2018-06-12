@@ -5,21 +5,11 @@ var Materials = require('./Materials');
 
 module.exports = {
 
-  getByMaterialsId: function(materialsId, successCallback, errorCallback) {
-    Materials.getById(materialsId, material => {
-        knex('tags').select('*').where({ materials_id: material.id })
-          .then(tags => {
-            if (tags.length > 0) {
-              successCallback.call(this, tags);
-            } else {
-              errorCallback.call(this, new Error("No tags found."));
-            }
-          })
-          .catch(error => {
-            errorCallback.call(this, error);
-          });
-      },
-      errorCallback);
+  getByMaterialsId: (materialsId, successCallback, errorCallback) => {
+    return Materials.getById(materialsId)
+      .then(material => {
+        return knex('tags').select('*').where({ materials_id: material.id })
+      });
   }
 
 };

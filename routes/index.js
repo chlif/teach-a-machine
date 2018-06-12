@@ -11,33 +11,26 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/start', function (req, res, next) {
-  Materials.getAll(materials => {
-    res.render('start', { materials: materials });
-  }, error => {
-    next(new Error("No datasets found."));
-  });
+  Materials.getAll()
+    .then(materials => res.render('start', { materials: materials }))
+    .catch(error => next(new Error("No datasets found.")));
 });
 
 router.get('/demographic/:materialsId', function (req, res, next) {
-  Materials.getById(req.params.materialsId,
-    material => {
-      res.render('demographic', { material: material });
-    }, error => {
-      next(error);
-    });
+  Materials.getById(req.params.materialsId)
+    .then(material => res.render('demographic', { material: material }))
+    .catch(error => next(error));
 });
 
 router.get('/run/:materialsId', function(req, res, next) {
-  Materials.getById(req.params.materialsId,
-    material => {
-      Tags.getByMaterialsId(material.id,
-        tags => {
-          console.log(tags);
-          res.render('run', { material: material, tags: tags });
-        },
-        error => next(error));
-    },
-    error => next(error));
+  Materials.getById(req.params.materialsId)
+    .then(material => {
+      return Tags.getByMaterialsId(material.id)
+        .then(tags => {
+          return res.render('run', { material: material, tags: tags });
+        })
+    })
+    .catch(error => next(error));
 });
 
 module.exports = router;
