@@ -6,9 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var materialsRouter = require('./routes/materials');
 var sentencesRouter = require('./routes/sentences');
-var tagsRouter = require('./routes/tags');
 var labelsRouter = require('./routes/labels');
 var demographicRouter = require('./routes/demographic');
 
@@ -33,9 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/materials', materialsRouter);
 app.use('/api/sentences', sentencesRouter);
-app.use('/api/tags', tagsRouter);
 app.use('/api/labels', labelsRouter);
 app.use('/api/demographic', demographicRouter);
 
