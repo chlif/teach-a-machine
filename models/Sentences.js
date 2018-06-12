@@ -7,9 +7,7 @@ module.exports = {
 
   getByMaterialsId: (materialsId) => {
     return Materials.getById(materialsId)
-      .then(material => {
-        return knex('tags').select('*').where({ materials_id: material.id })
-      });
+      .then(material => knex('sentences').select('*').where({ materials_id: material.id }));
   }
 
 };

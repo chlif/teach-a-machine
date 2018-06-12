@@ -1,14 +1,10 @@
 var router = require('express').Router();
-var config = require('../knexfile.js');
-var knex = require('knex')(config.development);
+var Sentences = require('../models/Sentences');
 
-router.get('/:materialsId', function(req, res, next) {
-  knex('sentences')
-      .select('*')
-      .where({ materials_id: req.params.materialsId })
-      .then(sentences => {
-        res.json(sentences);
-      });
+router.get('/:materialsId', (req, res, next) => {
+  Sentences.getByMaterialsId(req.params.materialsId)
+      .then(sentences => res.json(sentences))
+      .catch(error => next(error));
 });
 
 module.exports = router;
