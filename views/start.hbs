@@ -1,0 +1,12 @@
+<section class="jumbotron">
+  <h1 class="display-4">Pick a dataset</h1>
+  <p class="lead">In which area would you like to help our machine friends?</p>
+  <hr class="my-4">
+  <ul class="list-group">
+  {{#each materials}}
+    <li class="list-group-item">
+      <a href="run/{{this.id}}">{{this.name}}</a>
+    </li>
+  {{/each}}
+  </ul>
+</section>

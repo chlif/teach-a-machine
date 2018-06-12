@@ -1,0 +1,26 @@
+<section id="label" class="jumbotron">
+  <p><strong>{{material.name}}</strong></p>
+  <div id="alert" class="alert alert-danger"></div>
+
+  <hr class="my-4">
+
+  <p><small>Instruction: {{material.instruction}}</small></p>
+
+  <p id="sentence" class="loading">Loading the first sentence...</p>
+
+  <div class="btn-group" role="group">
+  {{#each tags}}
+    <button type="button" class="btn btn-primary add-label" data-tag-id="{{this.id}}">{{this.name}}</a>
+  {{/each}}
+    <button type="button" id="skip" class="btn btn-dark">Skip</a>
+  </div>
+
+</section>
+
+<script type="text/javascript">
+  window.teachamachine = {
+    materialsId: {{material.id}}
+  };
+</script>
+<script type="text/javascript" src="/javascripts/alert.js"></script>
+<script type="text/javascript" src="/javascripts/label.js"></script>

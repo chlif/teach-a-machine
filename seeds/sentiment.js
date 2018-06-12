@@ -4,7 +4,11 @@ exports.seed = function(knex, Promise) {
   return knex('materials').del()
       .then(function () {
         return knex('materials').insert([
-          {id: 1, name: 'Finnish Sentiment'}
+          {
+            id: 1,
+            name: 'Sentiment Analysis Data (in Finnish)',
+            instruction: 'Mitä tunnetta tai tunteita löydät seuraavasta lauseesta?'
+          }
         ]);
       })
 

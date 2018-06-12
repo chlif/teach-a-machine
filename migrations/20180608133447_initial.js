@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('materials', function (table) {
       table.increments().primary();
       table.string('name');
+      table.string('instruction');
     }),
 
     knex.schema.createTable('sentences', function (table) {
@@ -24,6 +25,7 @@ exports.up = function(knex, Promise) {
       table.increments().primary();
       table.string('partial');
       table.integer('materials_id').unsigned().references('materials.id');
+      table.integer('sentences_id').unsigned().references('sentences.id');
       table.integer('tags_id').unsigned().references('tags.id');
     })
 

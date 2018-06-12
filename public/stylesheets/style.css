@@ -1,8 +1,16 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 50px;
 }
 
-a {
-  color: #00B7FF;
+#label {}
+
+  #label #sentence {
+    font-size: 2rem;
+  }
+    #label #sentence.loading {
+      color: #999;
+    }
+
+#alert {
+  display: none;
 }
