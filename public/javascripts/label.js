@@ -14,9 +14,14 @@
   });
 
   function loadSentences() {
-    $.get('/api/sentences/' + materialsId, function(data) {
-      sentenceQueue = data;
-      nextSentence();
+    var numberOfSenteces = 10;
+    $.get('/api/sentences/' + materialsId + '/random/' + numberOfSenteces, function(data) {
+      if (data.length > 0) {
+        sentenceQueue = data;
+        nextSentence();
+      } else {
+        showAlert("No sentences found for this data set.");
+      }
     }).fail(function (error) {
       showAlert(error.message);
     });

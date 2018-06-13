@@ -5,9 +5,14 @@ var Materials = require('./Materials');
 
 module.exports = {
 
-  getByMaterialsId: (materialsId) => {
+  getRandomByMaterialsId: (materialsId, numberOfSenteces) => {
     return Materials.getById(materialsId)
-      .then(material => knex('sentences').select('*').where({ materials_id: material.id }));
+      .then(material =>
+        knex('sentences').select('*')
+            .where({ materials_id: material.id })
+            .orderByRaw('RAND()')
+            .limit(numberOfSenteces)
+      );
   }
 
 };
