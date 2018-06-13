@@ -32,11 +32,13 @@ exports.seed = function(knex, Promise) {
       })
       .then(function () {
         return knex('tags').insert([
-          { id: 1, materials_id: 1, name: 'ilo' },
-          { id: 2, materials_id: 1, name: 'suru' },
-          { id: 3, materials_id: 1, name: 'turhautuminen' },
-          { id: 4, materials_id: 1, name: 'viha' },
-          { id: 5, materials_id: 1, name: 'häpeä' }
+          { id: 1, materials_id: 1, name: 'viha' },
+          { id: 2, materials_id: 1, name: 'pelko' },
+          { id: 3, materials_id: 1, name: 'inho' },
+          { id: 4, materials_id: 1, name: 'ilo' },
+          { id: 5, materials_id: 1, name: 'suru' },
+          { id: 6, materials_id: 1, name: 'yllätys' },
+          { id: 7, materials_id: 1, name: 'halveksunta' }
         ]);
       });
 
