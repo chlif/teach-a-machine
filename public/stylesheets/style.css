@@ -14,7 +14,7 @@ body {
   #label #sentence {
     font-size: 2rem;
   }
-    #label #sentence.loading {
+    #label .loading {
       color: #999;
     }
 

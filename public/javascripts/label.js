@@ -15,9 +15,11 @@
 
   function loadSentences() {
     var numberOfSenteces = 10;
+    showLoading();
     $.get('/api/sentences/' + materialsId + '/random/' + numberOfSenteces, function(data) {
       if (data.length > 0) {
         sentenceQueue = data;
+        hideLoading();
         nextSentence();
       } else {
         showAlert("No sentences found for this data set.");
@@ -36,9 +38,7 @@
   }
 
   function updateSentence(sentence) {
-    $('#sentence')
-      .removeClass('loading')
-      .text(sentence.sentence);
+    $('#sentence').text(sentence.sentence);
     sentencesId = sentence.id;
   }
 
@@ -63,5 +63,15 @@
   $('#skip').click(function (event) {
     nextSentence();
   });
+
+  function showLoading() {
+    $('#loading').show();
+    $('#sentence').text('');
+    $('button').attr('disabled', true);
+  }
+  function hideLoading() {
+    $('#loading').hide();
+    $('button').attr('disabled', false);
+  }
 
 })(jQuery);

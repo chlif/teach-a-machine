@@ -6,7 +6,11 @@
 
   <p><small>Instruction: {{material.instruction}}</small></p>
 
-  <p id="sentence" class="loading">Loading the first sentence...</p>
+  <p id="loading" class="loading">
+    <img src="/images/ajax-loader.gif">
+    Loading next sentences...
+  </p>
+  <p id="sentence"></p>
 
   <div class="btn-group" role="group">
   {{#each tags}}
